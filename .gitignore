@@ -1,9 +1,13 @@
 node_modules
 dist
-/generated/prisma
+**/generated/prisma
 
 # Env
 .env
 
 # Docker
 data
+
+# Lock
+
+package-lock.json
