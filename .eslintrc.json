@@ -1,6 +1,7 @@
 {
   "extends": "@rocketseat/eslint-config/node",
   "rules": {
+    "singleQuote": false,
     "no-useless-constructor": "off"
   }
 }
