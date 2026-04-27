@@ -11,6 +11,7 @@ import { AuthGuard } from "@nestjs/passport"
 
 import { PrismaService } from "@/prisma/prisma.service"
 
+import { JwtAuthGuard } from "@/auth/jwt-auth.guard"
 import type { UserPayload } from "@/auth/jwt.strategy"
 import { CurrentUser } from "@/auth/current-user-decorator"
 
@@ -21,22 +22,22 @@ const createQuestionBodySchema = z.object({
   content: z.string(),
 })
 
+const bodyValidationPipe = new ZodValidationPipe(createQuestionBodySchema)
+
 type CreateQuestionBodySchema = z.infer<typeof createQuestionBodySchema>
 
 @Controller("/questions")
-@UseGuards(AuthGuard("jwt"))
+@UseGuards(JwtAuthGuard)
 export class CreateQuestionController {
   constructor(private prisma: PrismaService) {}
 
   @Post()
   @HttpCode(201)
-  @UsePipes(new ZodValidationPipe(createQuestionBodySchema))
+  @UsePipes()
   async handle(
-    @Body() body: CreateQuestionBodySchema,
+    @Body(bodyValidationPipe) body: CreateQuestionBodySchema,
     @CurrentUser() user: UserPayload,
   ) {
-    console.log("TESTE")
-
     const { title, content } = body
     const userId = user.sub
     const slug = this.convertToSlug(title)
