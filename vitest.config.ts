@@ -1,7 +1,6 @@
 import swc from "unplugin-swc"
 import { resolve } from "path"
 import { defineConfig } from "vitest/config"
-import tsConfigPaths from "vite-tsconfig-paths"
 
 export default defineConfig({
   test: {
@@ -9,7 +8,6 @@ export default defineConfig({
     root: "./",
   },
   plugins: [
-    tsConfigPaths(),
     swc.vite({
       module: { type: "es6" },
     }),
@@ -18,5 +16,6 @@ export default defineConfig({
     alias: {
       src: resolve(__dirname, "./src"),
     },
+    tsconfigPaths: true,
   },
 })
