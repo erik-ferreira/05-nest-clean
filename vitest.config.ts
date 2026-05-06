@@ -3,6 +3,7 @@ import { resolve } from "path"
 import { defineConfig } from "vitest/config"
 
 export default defineConfig({
+  oxc: false,
   test: {
     globals: true,
     root: "./",
