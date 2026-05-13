@@ -4,7 +4,7 @@ import { ConfigService } from "@nestjs/config"
 import { ExtractJwt, Strategy } from "passport-jwt"
 import { PassportStrategy } from "@nestjs/passport"
 
-import { Env } from "@/env"
+import { Env } from "@/infra/env"
 
 const tokenPayloadSchema = z.object({
   sub: z.uuid(),

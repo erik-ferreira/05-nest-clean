@@ -9,13 +9,13 @@ import {
 } from "@nestjs/common"
 import { AuthGuard } from "@nestjs/passport"
 
-import { PrismaService } from "@/prisma/prisma.service"
+import { PrismaService } from "@/infra/prisma/prisma.service"
 
-import { JwtAuthGuard } from "@/auth/jwt-auth.guard"
-import type { UserPayload } from "@/auth/jwt.strategy"
-import { CurrentUser } from "@/auth/current-user-decorator"
+import { JwtAuthGuard } from "@/infra/auth/jwt-auth.guard"
+import type { UserPayload } from "@/infra/auth/jwt.strategy"
+import { CurrentUser } from "@/infra/auth/current-user-decorator"
 
-import { ZodValidationPipe } from "@/pipes/zod-validation-pipe"
+import { ZodValidationPipe } from "@/infra/http/pipes/zod-validation-pipe"
 
 const createQuestionBodySchema = z.object({
   title: z.string(),

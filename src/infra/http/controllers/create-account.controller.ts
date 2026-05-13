@@ -9,9 +9,9 @@ import {
   ConflictException,
 } from "@nestjs/common"
 
-import { PrismaService } from "@/prisma/prisma.service"
+import { PrismaService } from "@/infra/prisma/prisma.service"
 
-import { ZodValidationPipe } from "@/pipes/zod-validation-pipe"
+import { ZodValidationPipe } from "@/infra/http/pipes/zod-validation-pipe"
 
 const createAccountBodySchema = z.object({
   name: z.string(),
