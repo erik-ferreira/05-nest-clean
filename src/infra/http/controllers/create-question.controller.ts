@@ -9,7 +9,7 @@ import {
 } from "@nestjs/common"
 import { AuthGuard } from "@nestjs/passport"
 
-import { PrismaService } from "@/infra/prisma/prisma.service"
+import { PrismaService } from "@/infra/database/prisma/prisma.service"
 
 import { JwtAuthGuard } from "@/infra/auth/jwt-auth.guard"
 import type { UserPayload } from "@/infra/auth/jwt.strategy"
