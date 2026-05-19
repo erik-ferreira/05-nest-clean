@@ -7,6 +7,8 @@ import { CreateAccountController } from "@/infra/http/controllers/create-account
 import { CreateQuestionController } from "@/infra/http/controllers/create-question.controller"
 import { FetchRecentQuestionsController } from "@/infra/http/controllers/fetch-recent-questions.controller"
 
+import { CreateQuestionUseCase } from "@/domain/forum/application/use-cases/create-question"
+
 @Module({
   imports: [DatabaseModule],
   controllers: [
@@ -15,5 +17,6 @@ import { FetchRecentQuestionsController } from "@/infra/http/controllers/fetch-r
     CreateQuestionController,
     FetchRecentQuestionsController,
   ],
+  providers: [CreateQuestionUseCase],
 })
 export class HttpModule {}
