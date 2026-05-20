@@ -23,7 +23,7 @@ model User {
   name     String
   email    String   @unique
   password String
-  role     UserRole @unique
+  role     UserRole @default(STUDENT)
 
   questions Question[]
   answers   Answer[]
