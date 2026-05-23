@@ -1,5 +1,11 @@
 import z from "zod"
-import { Controller, Get, Query, UseGuards } from "@nestjs/common"
+import {
+  Get,
+  Query,
+  UseGuards,
+  Controller,
+  BadRequestException,
+} from "@nestjs/common"
 
 import { ZodValidationPipe } from "@/infra/http/pipes/zod-validation-pipe"
 
@@ -26,7 +32,7 @@ export class FetchRecentQuestionsController {
     const result = await this.fetchRecentQuestions.execute({ page })
 
     if (result.isLeft()) {
-      throw new Error()
+      throw new BadRequestException()
     }
 
     const questions = result.value.questions
