@@ -2,12 +2,12 @@ import { UniqueEntityID } from "@/core/entities/unique-entity-id"
 
 import { QuestionAttachment } from "@/domain/forum/enterprise/entities/question-attachment"
 
-import { Comment as PrismaComment } from "@/generated/prisma/client"
+import { Attachment as PrismaAttachment } from "@/generated/prisma/client"
 
 export class PrismaQuestionAttachmentMapper {
-  static toDomain(raw: PrismaComment): QuestionAttachment {
+  static toDomain(raw: PrismaAttachment): QuestionAttachment {
     if (!raw.questionId) {
-      throw new Error("Invalid comment type.")
+      throw new Error("Invalid attachment type.")
     }
 
     return QuestionAttachment.create(
