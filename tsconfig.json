@@ -15,7 +15,8 @@
     "strict": true,
     "baseUrl": "./",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@/test/*": ["./test/*"]
     },
     "incremental": true,
     "skipLibCheck": true,
