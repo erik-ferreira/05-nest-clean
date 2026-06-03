@@ -1,3 +1,5 @@
+import { Injectable } from "@nestjs/common"
+
 import { Either, left, right } from "@/core/either"
 import { Question } from "../../enterprise/entities/question"
 import { QuestionsRepository } from "../repositories/questions-repository"
@@ -13,7 +15,7 @@ interface EditQuestionUseCaseRequest {
   questionId: string
   title: string
   content: string
-  attachmentIds: string[]
+  attachmentsIds: string[]
 }
 
 type EditQuestionUseCaseResponse = Either<
@@ -23,6 +25,7 @@ type EditQuestionUseCaseResponse = Either<
   }
 >
 
+@Injectable()
 export class EditQuestionUseCase {
   constructor(
     private questionsRepository: QuestionsRepository,
@@ -34,7 +37,7 @@ export class EditQuestionUseCase {
     questionId,
     title,
     content,
-    attachmentIds,
+    attachmentsIds,
   }: EditQuestionUseCaseRequest): Promise<EditQuestionUseCaseResponse> {
     const question = await this.questionsRepository.findById(questionId)
 
@@ -55,7 +58,7 @@ export class EditQuestionUseCase {
     )
 
     // new attachments send by user to edit question
-    const questionAttachments = attachmentIds.map((attachmentId) => {
+    const questionAttachments = attachmentsIds.map((attachmentId) => {
       return QuestionAttachment.create({
         attachmentId: new UniqueEntityID(attachmentId),
         questionId: question.id,
