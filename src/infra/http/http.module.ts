@@ -13,6 +13,7 @@ import { CreateQuestionController } from "@/infra/http/controllers/create-questi
 import { GetQuestionBySlugController } from "@/infra/http/controllers/get-question-by-slug.controller"
 import { FetchQuestionAnswersController } from "@/infra/http/controllers/fetch-question-answers.controller"
 import { FetchRecentQuestionsController } from "@/infra/http/controllers/fetch-recent-questions.controller"
+import { ChooseQuestionBestAnswerController } from "@/infra/http/controllers/choose-question-best-answer.controller"
 
 import { CreateQuestionUseCase } from "@/domain/forum/application/use-cases/create-question"
 import { RegisterStudentUseCase } from "@/domain/forum/application/use-cases/register-student"
@@ -25,6 +26,7 @@ import { AnswerQuestionUseCase } from "@/domain/forum/application/use-cases/answ
 import { EditAnswerUseCase } from "@/domain/forum/application/use-cases/edit-answer"
 import { DeleteAnswerUseCase } from "@/domain/forum/application/use-cases/delete-answer"
 import { FetchQuestionAnswersUseCase } from "@/domain/forum/application/use-cases/fetch-question-answers"
+import { ChooseQuestionBestAnswerUseCase } from "@/domain/forum/application/use-cases/choose-question-best-answer"
 
 @Module({
   imports: [DatabaseModule],
@@ -40,6 +42,7 @@ import { FetchQuestionAnswersUseCase } from "@/domain/forum/application/use-case
     EditAnswerController,
     DeleteAnswerController,
     FetchQuestionAnswersController,
+    ChooseQuestionBestAnswerController,
   ],
   providers: [
     CreateQuestionUseCase,
@@ -53,6 +56,7 @@ import { FetchQuestionAnswersUseCase } from "@/domain/forum/application/use-case
     EditAnswerUseCase,
     DeleteAnswerUseCase,
     FetchQuestionAnswersUseCase,
+    ChooseQuestionBestAnswerUseCase,
   ],
 })
 export class HttpModule {}
