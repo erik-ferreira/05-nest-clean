@@ -11,6 +11,7 @@ import { DeleteQuestionController } from "@/infra/http/controllers/delete-questi
 import { AnswerQuestionController } from "@/infra/http/controllers/answer-question.controller"
 import { CreateQuestionController } from "@/infra/http/controllers/create-question.controller"
 import { CommentOnQuestionController } from "@/infra/http/controllers/comment-on-question.controller"
+import { CommentOnAnswerController } from "@/infra/http/controllers/comment-on-answer.controller"
 import { GetQuestionBySlugController } from "@/infra/http/controllers/get-question-by-slug.controller"
 import { FetchQuestionAnswersController } from "@/infra/http/controllers/fetch-question-answers.controller"
 import { FetchRecentQuestionsController } from "@/infra/http/controllers/fetch-recent-questions.controller"
@@ -31,6 +32,7 @@ import { DeleteQuestionCommentUseCase } from "@/domain/forum/application/use-cas
 import { FetchQuestionAnswersUseCase } from "@/domain/forum/application/use-cases/fetch-question-answers"
 import { ChooseQuestionBestAnswerUseCase } from "@/domain/forum/application/use-cases/choose-question-best-answer"
 import { CommentOnQuestionUseCase } from "@/domain/forum/application/use-cases/comment-on-question"
+import { CommentOnAnswerUseCase } from "@/domain/forum/application/use-cases/comment-on-answer"
 
 @Module({
   imports: [DatabaseModule],
@@ -48,6 +50,7 @@ import { CommentOnQuestionUseCase } from "@/domain/forum/application/use-cases/c
     FetchQuestionAnswersController,
     ChooseQuestionBestAnswerController,
     CommentOnQuestionController,
+    CommentOnAnswerController,
     DeleteQuestionCommentController,
   ],
   providers: [
@@ -64,6 +67,7 @@ import { CommentOnQuestionUseCase } from "@/domain/forum/application/use-cases/c
     FetchQuestionAnswersUseCase,
     ChooseQuestionBestAnswerUseCase,
     CommentOnQuestionUseCase,
+    CommentOnAnswerUseCase,
     DeleteQuestionCommentUseCase,
   ],
 })
