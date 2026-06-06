@@ -1,14 +1,13 @@
-import { FetchQuestionAnswersCase } from "./fetch-question-answers"
+import { FetchQuestionAnswersUseCase } from "./fetch-question-answers"
 import { UniqueEntityID } from "@/core/entities/unique-entity-id"
 import { makeAnswer } from "test/factories/make-answer"
 import { InMemoryAnswerAttachmentRepository } from "test/repositories/in-memory-answer-attachments-repository"
 
 import { InMemoryAnswersRepository } from "test/repositories/in-memory-answers-repository"
-import { InMemoryQuestionAttachmentRepository } from "test/repositories/in-memory-question-attachments-repository"
 
 let inMemoryAnswerAttachmentsRepository: InMemoryAnswerAttachmentRepository
 let inMemoryAnswersRepository: InMemoryAnswersRepository
-let sut: FetchQuestionAnswersCase
+let sut: FetchQuestionAnswersUseCase
 
 describe("Fetch Question Answers", () => {
   beforeEach(() => {
@@ -17,7 +16,7 @@ describe("Fetch Question Answers", () => {
     inMemoryAnswersRepository = new InMemoryAnswersRepository(
       inMemoryAnswerAttachmentsRepository,
     )
-    sut = new FetchQuestionAnswersCase(inMemoryAnswersRepository)
+    sut = new FetchQuestionAnswersUseCase(inMemoryAnswersRepository)
   })
 
   it("should be able to delete a question", async () => {
