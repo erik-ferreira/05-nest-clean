@@ -3,6 +3,7 @@ import { Module } from "@nestjs/common"
 import { DatabaseModule } from "@/infra/database/database.module"
 
 import { EditAnswerController } from "@/infra/http/controllers/edit-answer.controller"
+import { DeleteAnswerController } from "@/infra/http/controllers/delete-answer.controller"
 import { AuthenticateController } from "@/infra/http/controllers/authenticate.controller"
 import { EditQuestionController } from "@/infra/http/controllers/edit-question.controller"
 import { CreateAccountController } from "@/infra/http/controllers/create-account.controller"
@@ -21,6 +22,7 @@ import { EditQuestionUseCase } from "@/domain/forum/application/use-cases/edit-q
 import { DeleteQuestionUseCase } from "@/domain/forum/application/use-cases/delete-question"
 import { AnswerQuestionUseCase } from "@/domain/forum/application/use-cases/answer-question"
 import { EditAnswerUseCase } from "@/domain/forum/application/use-cases/edit-answer"
+import { DeleteAnswerUseCase } from "@/domain/forum/application/use-cases/delete-answer"
 
 @Module({
   imports: [DatabaseModule],
@@ -34,6 +36,7 @@ import { EditAnswerUseCase } from "@/domain/forum/application/use-cases/edit-ans
     DeleteQuestionController,
     AnswerQuestionController,
     EditAnswerController,
+    DeleteAnswerController,
   ],
   providers: [
     CreateQuestionUseCase,
@@ -45,6 +48,7 @@ import { EditAnswerUseCase } from "@/domain/forum/application/use-cases/edit-ans
     DeleteQuestionUseCase,
     AnswerQuestionUseCase,
     EditAnswerUseCase,
+    DeleteAnswerUseCase,
   ],
 })
 export class HttpModule {}

@@ -3,8 +3,8 @@ import { Question } from "@/domain/forum/enterprise/entities/question"
 import { AnswersRepository } from "@/domain/forum/application/repositories/answers-repository"
 import { QuestionsRepository } from "@/domain/forum/application/repositories/questions-repository"
 import { Either, left, right } from "@/core/either"
-import { ResourceNotFoundError } from "../../../../core/errors/resource-not-found-error"
-import { NotAllowedError } from "../../../../core/errors/not-allowed-error"
+import { ResourceNotFoundError } from "@/core/errors/resource-not-found-error"
+import { NotAllowedError } from "@/core/errors/not-allowed-error"
 
 interface ChooseQuestionBestAnswerUseCaseRequest {
   authorId: string

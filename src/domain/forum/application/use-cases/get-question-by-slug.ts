@@ -3,7 +3,7 @@ import { Injectable } from "@nestjs/common"
 import { Either, left, right } from "@/core/either"
 import { Question } from "@/domain/forum/enterprise/entities/question"
 import { QuestionsRepository } from "../repositories/questions-repository"
-import { ResourceNotFoundError } from "../../../../core/errors/resource-not-found-error"
+import { ResourceNotFoundError } from "@/core/errors/resource-not-found-error"
 
 interface GetQuestionBySlugUseCaseRequest {
   slug: string
