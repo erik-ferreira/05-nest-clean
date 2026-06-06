@@ -1,22 +1,12 @@
 import { Injectable } from "@nestjs/common"
 
+import { Student } from "@/domain/forum/enterprise/entities/student"
+import { HashGenerator } from "@/domain/forum/application/cryptography/hash-generator"
+import { StudentsRepository } from "@/domain/forum/application/repositories/students-repository"
+
 import { Either, right, left } from "@/core/either"
-import { UniqueEntityID } from "@/core/entities/unique-entity-id"
 
-import { Question } from "@/domain/forum/enterprise/entities/question"
-
-import { QuestionsRepository } from "../repositories/questions-repository"
-import { QuestionAttachment } from "../../enterprise/entities/question-attachment"
-import { QuestionAttachmentList } from "../../enterprise/entities/question-attachment-list"
-
-import { Student } from "../../enterprise/entities/student"
-
-import { WrongCredentialsError } from "./errors/wrong-credentials-error"
 import { StudentAlreadyExistsError } from "./errors/student-already-exists-error"
-import { StudentsRepository } from "../repositories/students-repository"
-import { HashGenerator } from "../cryptography/hash-generator"
-import { HashComparer } from "../cryptography/hash-comparer"
-import { Encrypter } from "../cryptography/encrypter"
 
 interface RegisterStudentUseCaseRequest {
   name: string

@@ -1,6 +1,6 @@
 import { Answer } from "@/domain/forum/enterprise/entities/answer"
-
 import { AnswersRepository } from "@/domain/forum/application/repositories/answers-repository"
+
 import { Either, right } from "@/core/either"
 
 interface FetchQuestionAnswersCaseRequest {

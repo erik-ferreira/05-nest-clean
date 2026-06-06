@@ -1,14 +1,15 @@
 import { Injectable } from "@nestjs/common"
 
+import { Answer } from "@/domain/forum/enterprise/entities/answer"
+import { AnswerAttachment } from "@/domain/forum/enterprise/entities/answer-attachment"
+import { AnswersRepository } from "@/domain/forum/application/repositories/answers-repository"
+import { AnswerAttachmentList } from "@/domain/forum/enterprise/entities/answer-attachment-list"
+import { AnswerAttachmentsRepository } from "@/domain/forum/application/repositories/answer-attachments-repository"
+
 import { Either, left, right } from "@/core/either"
-import { Answer } from "../../enterprise/entities/answer"
-import { AnswersRepository } from "../repositories/answers-repository"
-import { ResourceNotFoundError } from "@/core/errors/resource-not-found-error"
 import { NotAllowedError } from "@/core/errors/not-allowed-error"
-import { AnswerAttachmentsRepository } from "../repositories/answer-attachments-repository"
-import { AnswerAttachmentList } from "../../enterprise/entities/answer-attachment-list"
-import { AnswerAttachment } from "../../enterprise/entities/answer-attachment"
 import { UniqueEntityID } from "@/core/entities/unique-entity-id"
+import { ResourceNotFoundError } from "@/core/errors/resource-not-found-error"
 
 interface EditAnswerUseCaseRequest {
   authorId: string
