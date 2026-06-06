@@ -1,3 +1,5 @@
+import { Injectable } from "@nestjs/common"
+
 import { QuestionComment } from "@/domain/forum/enterprise/entities/question-comment"
 import { QuestionCommentsRepository } from "@/domain/forum/application/repositories/question-comments-repository"
 
@@ -15,6 +17,7 @@ type FetchQuestionCommentsCaseResponse = Either<
   }
 >
 
+@Injectable()
 export class FetchQuestionCommentsCase {
   constructor(private questionCommentRepository: QuestionCommentsRepository) {}
 
