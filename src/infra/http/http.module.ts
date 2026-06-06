@@ -10,11 +10,12 @@ import { CreateAccountController } from "@/infra/http/controllers/create-account
 import { DeleteQuestionController } from "@/infra/http/controllers/delete-question.controller"
 import { AnswerQuestionController } from "@/infra/http/controllers/answer-question.controller"
 import { CreateQuestionController } from "@/infra/http/controllers/create-question.controller"
+import { CommentOnQuestionController } from "@/infra/http/controllers/comment-on-question.controller"
 import { GetQuestionBySlugController } from "@/infra/http/controllers/get-question-by-slug.controller"
 import { FetchQuestionAnswersController } from "@/infra/http/controllers/fetch-question-answers.controller"
 import { FetchRecentQuestionsController } from "@/infra/http/controllers/fetch-recent-questions.controller"
+import { DeleteQuestionCommentController } from "@/infra/http/controllers/delete-question-comment.controller"
 import { ChooseQuestionBestAnswerController } from "@/infra/http/controllers/choose-question-best-answer.controller"
-import { CommentOnQuestionController } from "@/infra/http/controllers/comment-on-question.controller"
 
 import { CreateQuestionUseCase } from "@/domain/forum/application/use-cases/create-question"
 import { RegisterStudentUseCase } from "@/domain/forum/application/use-cases/register-student"
@@ -26,6 +27,7 @@ import { DeleteQuestionUseCase } from "@/domain/forum/application/use-cases/dele
 import { AnswerQuestionUseCase } from "@/domain/forum/application/use-cases/answer-question"
 import { EditAnswerUseCase } from "@/domain/forum/application/use-cases/edit-answer"
 import { DeleteAnswerUseCase } from "@/domain/forum/application/use-cases/delete-answer"
+import { DeleteQuestionCommentUseCase } from "@/domain/forum/application/use-cases/delete-question-comment"
 import { FetchQuestionAnswersUseCase } from "@/domain/forum/application/use-cases/fetch-question-answers"
 import { ChooseQuestionBestAnswerUseCase } from "@/domain/forum/application/use-cases/choose-question-best-answer"
 import { CommentOnQuestionUseCase } from "@/domain/forum/application/use-cases/comment-on-question"
@@ -46,6 +48,7 @@ import { CommentOnQuestionUseCase } from "@/domain/forum/application/use-cases/c
     FetchQuestionAnswersController,
     ChooseQuestionBestAnswerController,
     CommentOnQuestionController,
+    DeleteQuestionCommentController,
   ],
   providers: [
     CreateQuestionUseCase,
@@ -61,6 +64,7 @@ import { CommentOnQuestionUseCase } from "@/domain/forum/application/use-cases/c
     FetchQuestionAnswersUseCase,
     ChooseQuestionBestAnswerUseCase,
     CommentOnQuestionUseCase,
+    DeleteQuestionCommentUseCase,
   ],
 })
 export class HttpModule {}
