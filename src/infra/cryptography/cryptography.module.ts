@@ -13,5 +13,6 @@ import { HashGenerator } from "@/domain/forum/application/cryptography/hash-gene
     { provide: HashComparer, useClass: BcryptHasher },
     { provide: HashGenerator, useClass: BcryptHasher },
   ],
+  exports: [Encrypter, HashComparer, HashGenerator],
 })
 export class CryptographyModule {}

@@ -45,18 +45,18 @@ describe("Answer Question (E2E)", () => {
     const questionId = question.id.toString()
 
     const response = await request(app.getHttpServer())
-      .put(`/questions/${questionId}`)
+      .post(`/questions/${questionId}/answers`)
       .set("Authorization", `Bearer ${accessToken}`)
       .send({ content: "New answer" })
 
-    expect(response.statusCode).toBe(204)
+    expect(response.statusCode).toBe(201)
 
-    const questionOnDatabase = await prisma.question.findFirst({
+    const answerOnDatabase = await prisma.answer.findFirst({
       where: {
         content: "New answer",
       },
     })
 
-    expect(questionOnDatabase).toBeTruthy()
+    expect(answerOnDatabase).toBeTruthy()
   })
 })

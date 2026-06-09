@@ -1,9 +1,9 @@
 import { Module } from "@nestjs/common"
 import { JwtModule } from "@nestjs/jwt"
 import { APP_GUARD } from "@nestjs/core"
-import { ConfigService } from "@nestjs/config"
 import { PassportModule } from "@nestjs/passport"
 
+import { EnvModule } from "../env/env.module"
 import { EnvService } from "../env/env.service"
 import { JwtStrategy } from "./jwt.strategy"
 import { JwtAuthGuard } from "./jwt-auth.guard"
@@ -13,7 +13,7 @@ import { JwtAuthGuard } from "./jwt-auth.guard"
     PassportModule,
     JwtModule.registerAsync({
       inject: [EnvService],
-      imports: [EnvService],
+      imports: [EnvModule],
       global: true,
       useFactory(config: EnvService) {
         const privateKey = config.get("JWT_PRIVATE_KEY")
@@ -29,6 +29,7 @@ import { JwtAuthGuard } from "./jwt-auth.guard"
   ],
   providers: [
     JwtStrategy,
+    EnvService,
     {
       provide: APP_GUARD,
       useClass: JwtAuthGuard,

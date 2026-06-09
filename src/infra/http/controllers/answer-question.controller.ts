@@ -1,10 +1,8 @@
 import z from "zod"
 import {
-  Put,
+  Post,
   Body,
   Param,
-  HttpCode,
-  UsePipes,
   Controller,
   BadRequestException,
 } from "@nestjs/common"
@@ -28,9 +26,7 @@ type AnswerQuestionBodySchema = z.infer<typeof answerQuestionBodySchema>
 export class AnswerQuestionController {
   constructor(private answerQuestion: AnswerQuestionUseCase) {}
 
-  @Put()
-  @HttpCode(204)
-  @UsePipes()
+  @Post()
   async handle(
     @Body(bodyValidationPipe) body: AnswerQuestionBodySchema,
     @CurrentUser() user: UserPayload,

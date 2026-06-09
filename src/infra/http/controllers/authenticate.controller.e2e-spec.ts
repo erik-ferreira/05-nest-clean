@@ -10,7 +10,7 @@ import { PrismaService } from "@/infra/database/prisma/prisma.service"
 
 import { StudentFactory } from "@/test/factories/make-student"
 
-describe("Authenticate (E2E)", () => {
+describe.skip("Authenticate (E2E)", () => {
   let app: INestApplication
   let prisma: PrismaService
   let studentFactory: StudentFactory

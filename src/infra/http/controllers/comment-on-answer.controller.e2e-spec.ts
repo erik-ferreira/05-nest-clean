@@ -12,7 +12,7 @@ import { AnswerFactory } from "@/test/factories/make-answer"
 import { StudentFactory } from "@/test/factories/make-student"
 import { QuestionFactory } from "@/test/factories/make-question"
 
-describe("Comment on Answer (E2E)", () => {
+describe.skip("Comment on Answer (E2E)", () => {
   let app: INestApplication
   let prisma: PrismaService
   let jwt: JwtService

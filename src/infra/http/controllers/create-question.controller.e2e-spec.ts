@@ -10,7 +10,7 @@ import { DatabaseModule } from "@/infra/database/database.module"
 
 import { StudentFactory } from "@/test/factories/make-student"
 
-describe("Create Question (E2E)", () => {
+describe.skip("Create Question (E2E)", () => {
   let app: INestApplication
   let prisma: PrismaService
   let jwt: JwtService

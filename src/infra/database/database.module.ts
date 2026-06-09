@@ -20,6 +20,7 @@ import { QuestionAttachmentsRepository } from "@/domain/forum/application/reposi
 
 @Module({
   providers: [
+    PrismaService,
     { provide: StudentsRepository, useClass: PrismaStudentsRepository },
     { provide: QuestionsRepository, useClass: PrismaQuestionsRepository },
     {
@@ -42,7 +43,7 @@ import { QuestionAttachmentsRepository } from "@/domain/forum/application/reposi
   ],
   exports: [
     PrismaService,
-
+    StudentsRepository,
     QuestionsRepository,
     QuestionCommentsRepository,
     QuestionAttachmentsRepository,

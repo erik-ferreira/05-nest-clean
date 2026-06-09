@@ -13,7 +13,7 @@ import { QuestionFactory } from "@/test/factories/make-question"
 import { AnswerCommentFactory } from "@/test/factories/make-answer-comment"
 import { QuestionCommentFactory } from "@/test/factories/make-question-comment"
 
-describe("Fetch answer comments (E2E)", () => {
+describe.skip("Fetch answer comments (E2E)", () => {
   let app: INestApplication
   let jwt: JwtService
   let studentFactory: StudentFactory

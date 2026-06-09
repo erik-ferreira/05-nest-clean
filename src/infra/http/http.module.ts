@@ -1,6 +1,7 @@
 import { Module } from "@nestjs/common"
 
 import { DatabaseModule } from "@/infra/database/database.module"
+import { CryptographyModule } from "@/infra/cryptography/cryptography.module"
 
 import { EditAnswerController } from "@/infra/http/controllers/edit-answer.controller"
 import { DeleteAnswerController } from "@/infra/http/controllers/delete-answer.controller"
@@ -41,7 +42,7 @@ import { FetchQuestionCommentsCase } from "@/domain/forum/application/use-cases/
 import { FetchAnswerCommentsUseCase } from "@/domain/forum/application/use-cases/fetch-answer-comment"
 
 @Module({
-  imports: [DatabaseModule],
+  imports: [DatabaseModule, CryptographyModule],
   controllers: [
     CreateAccountController,
     AuthenticateController,

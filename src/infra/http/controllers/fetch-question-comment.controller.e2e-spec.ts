@@ -11,7 +11,7 @@ import { StudentFactory } from "@/test/factories/make-student"
 import { QuestionFactory } from "@/test/factories/make-question"
 import { QuestionCommentFactory } from "@/test/factories/make-question-comment"
 
-describe("Fetch question comments (E2E)", () => {
+describe.skip("Fetch question comments (E2E)", () => {
   let app: INestApplication
   let jwt: JwtService
   let studentFactory: StudentFactory

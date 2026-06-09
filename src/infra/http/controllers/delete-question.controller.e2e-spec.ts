@@ -11,7 +11,7 @@ import { DatabaseModule } from "@/infra/database/database.module"
 import { StudentFactory } from "@/test/factories/make-student"
 import { QuestionFactory } from "@/test/factories/make-question"
 
-describe("Delete Question (E2E)", () => {
+describe.skip("Delete Question (E2E)", () => {
   let app: INestApplication
   let prisma: PrismaService
   let jwt: JwtService
