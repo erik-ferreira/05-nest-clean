@@ -1,9 +1,9 @@
 import { FetchQuestionAnswersUseCase } from "./fetch-question-answers"
 import { UniqueEntityID } from "@/core/entities/unique-entity-id"
-import { makeAnswer } from "test/factories/make-answer"
-import { InMemoryAnswerAttachmentRepository } from "test/repositories/in-memory-answer-attachments-repository"
+import { makeAnswer } from "@/test/factories/make-answer"
+import { InMemoryAnswerAttachmentRepository } from "@/test/repositories/in-memory-answer-attachments-repository"
 
-import { InMemoryAnswersRepository } from "test/repositories/in-memory-answers-repository"
+import { InMemoryAnswersRepository } from "@/test/repositories/in-memory-answers-repository"
 
 let inMemoryAnswerAttachmentsRepository: InMemoryAnswerAttachmentRepository
 let inMemoryAnswersRepository: InMemoryAnswersRepository

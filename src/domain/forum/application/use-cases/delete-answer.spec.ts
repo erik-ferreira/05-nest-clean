@@ -1,10 +1,10 @@
-import { InMemoryAnswersRepository } from "test/repositories/in-memory-answers-repository"
+import { InMemoryAnswersRepository } from "@/test/repositories/in-memory-answers-repository"
 import { DeleteAnswerUseCase } from "./delete-answer"
 import { UniqueEntityID } from "@/core/entities/unique-entity-id"
-import { makeAnswer } from "test/factories/make-answer"
+import { makeAnswer } from "@/test/factories/make-answer"
 import { NotAllowedError } from "@/core/errors/not-allowed-error"
-import { InMemoryAnswerAttachmentRepository } from "test/repositories/in-memory-answer-attachments-repository"
-import { makeAnswerAttachment } from "test/factories/make-answer-attachment"
+import { InMemoryAnswerAttachmentRepository } from "@/test/repositories/in-memory-answer-attachments-repository"
+import { makeAnswerAttachment } from "@/test/factories/make-answer-attachment"
 
 let inMemoryAnswerAttachmentRepository: InMemoryAnswerAttachmentRepository
 let inMemoryAnswersRepository: InMemoryAnswersRepository

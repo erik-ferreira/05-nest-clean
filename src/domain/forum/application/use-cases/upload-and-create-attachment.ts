@@ -6,7 +6,7 @@ import { Attachment } from "@/domain/forum/enterprise/entities/attachment"
 import { Either, left, right } from "@/core/either"
 
 import { InvalidAttachmentTypeError } from "./errors/invalid-attachment-type"
-import { AttachmentRepository } from "../../enterprise/entities/attachments-repository"
+import { AttachmentsRepository } from "../repositories/attachments-repository"
 
 interface UploadAndCreateAttachmentRequest {
   fileName: string
@@ -24,7 +24,7 @@ type UploadAndCreateAttachmentResponse = Either<
 @Injectable()
 export class UploadAndCreateAttachmentUseCase {
   constructor(
-    private attachmentsRepository: AttachmentRepository,
+    private attachmentsRepository: AttachmentsRepository,
     private uploader: Uploader,
   ) {}
 

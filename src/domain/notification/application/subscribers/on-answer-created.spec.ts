@@ -1,14 +1,14 @@
-import { makeAnswer } from "test/factories/make-answer"
-import { InMemoryAnswerAttachmentRepository } from "test/repositories/in-memory-answer-attachments-repository"
-import { InMemoryAnswersRepository } from "test/repositories/in-memory-answers-repository"
+import { makeAnswer } from "@/test/factories/make-answer"
+import { InMemoryAnswerAttachmentRepository } from "@/test/repositories/in-memory-answer-attachments-repository"
+import { InMemoryAnswersRepository } from "@/test/repositories/in-memory-answers-repository"
 import { OnAnswerCreated } from "./on-answer-created"
-import { InMemoryQuestionAttachmentRepository } from "test/repositories/in-memory-question-attachments-repository"
-import { InMemoryQuestionsRepository } from "test/repositories/in-memory-question-repository"
-import { InMemoryNotificationRepository } from "test/repositories/in-memory-notification-repository"
+import { InMemoryQuestionAttachmentRepository } from "@/test/repositories/in-memory-question-attachments-repository"
+import { InMemoryQuestionsRepository } from "@/test/repositories/in-memory-question-repository"
+import { InMemoryNotificationRepository } from "@/test/repositories/in-memory-notification-repository"
 import { SendNotificationUseCase } from "../use-cases/send-notification"
 import { vi } from "vitest"
-import { makeQuestion } from "test/factories/make-question"
-import { waitFor } from "test/utils/wait-for"
+import { makeQuestion } from "@/test/factories/make-question"
+import { waitFor } from "@/test/utils/wait-for"
 
 let inMemoryQuestionAttachmentRepository: InMemoryQuestionAttachmentRepository
 let inMemoryQuestionRepository: InMemoryQuestionsRepository
