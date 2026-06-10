@@ -21,6 +21,7 @@ import { DeleteAnswerCommentController } from "@/infra/http/controllers/delete-a
 import { ChooseQuestionBestAnswerController } from "@/infra/http/controllers/choose-question-best-answer.controller"
 import { FetchQuestionCommentsController } from "@/infra/http/controllers/fetch-question-comment.controller"
 import { FetchAnswerCommentsController } from "@/infra/http/controllers/fetch-answer-comments.controller"
+import { UploadAttachmentController } from "@/infra/http/controllers/upload-attachment.controller"
 
 import { CreateQuestionUseCase } from "@/domain/forum/application/use-cases/create-question"
 import { RegisterStudentUseCase } from "@/domain/forum/application/use-cases/register-student"
@@ -62,6 +63,7 @@ import { FetchAnswerCommentsUseCase } from "@/domain/forum/application/use-cases
     DeleteAnswerCommentController,
     FetchQuestionCommentsController,
     FetchAnswerCommentsController,
+    UploadAttachmentController,
   ],
   providers: [
     CreateQuestionUseCase,
