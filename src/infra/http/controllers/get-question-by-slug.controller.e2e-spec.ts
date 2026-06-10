@@ -11,7 +11,7 @@ import { Slug } from "@/domain/forum/enterprise/entities/value-objects/slug"
 import { QuestionFactory } from "@/test/factories/make-question"
 import { StudentFactory } from "@/test/factories/make-student"
 
-describe.skip("Get question by slug (E2E)", () => {
+describe("Get question by slug (E2E)", () => {
   let app: INestApplication
   let studentFactory: StudentFactory
   let questionFactory: QuestionFactory

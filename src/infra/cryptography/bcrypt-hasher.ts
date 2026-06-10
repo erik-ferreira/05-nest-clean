@@ -1,6 +1,7 @@
+import { hash, compare } from "bcryptjs"
+
 import { HashComparer } from "@/domain/forum/application/cryptography/hash-comparer"
 import { HashGenerator } from "@/domain/forum/application/cryptography/hash-generator"
-import { hash } from "bcryptjs"
 
 export class BcryptHasher implements HashGenerator, HashComparer {
   private HASH_SAL_LENGTH = 8
@@ -10,6 +11,6 @@ export class BcryptHasher implements HashGenerator, HashComparer {
   }
 
   compare(plain: string, hash: string): Promise<boolean> {
-    return this.compare(plain, hash)
+    return compare(plain, hash)
   }
 }

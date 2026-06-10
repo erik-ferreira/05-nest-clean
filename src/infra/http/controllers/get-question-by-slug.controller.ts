@@ -4,7 +4,7 @@ import { GetQuestionBySlugUseCase } from "@/domain/forum/application/use-cases/g
 
 import { QuestionPresenter } from "@/infra/http/presenters/question-presenter"
 
-@Controller("/questions")
+@Controller("/questions/:slug")
 export class GetQuestionBySlugController {
   constructor(private getQuestionBySlug: GetQuestionBySlugUseCase) {}
 

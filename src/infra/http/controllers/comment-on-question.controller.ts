@@ -29,8 +29,6 @@ export class CommentOnQuestionController {
   constructor(private commentOnQuestion: CommentOnQuestionUseCase) {}
 
   @Post()
-  @HttpCode(201)
-  @UsePipes()
   async handle(
     @Body(bodyValidationPipe) body: CommentOnQuestionBodySchema,
     @CurrentUser() user: UserPayload,

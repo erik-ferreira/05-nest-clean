@@ -52,8 +52,8 @@ describe.skip("Comment on Question (E2E)", () => {
 
     expect(response.statusCode).toBe(201)
 
-    const commentOnDatabase = await prisma.question.findFirst({
-      where: { title: "New comment" },
+    const commentOnDatabase = await prisma.comment.findFirst({
+      where: { content: "New comment" },
     })
 
     expect(commentOnDatabase).toBeTruthy()

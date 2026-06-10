@@ -19,7 +19,7 @@ type PageQueryParamSchema = z.infer<typeof pageQueryParamSchema>
 
 const queryPageValidationPipe = new ZodValidationPipe(pageQueryParamSchema)
 
-@Controller("/questions/:questionId/answers")
+@Controller("/questions/:questionId/comments")
 export class FetchQuestionCommentsController {
   constructor(private fetchQuestionComments: FetchQuestionCommentsCase) {}
 

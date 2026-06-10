@@ -43,7 +43,6 @@ describe.skip("Fetch question answers (E2E)", () => {
 
     const question = await questionFactory.makePrismaQuestion({
       authorId: user.id,
-      title: "Question 01",
     })
 
     await Promise.all([

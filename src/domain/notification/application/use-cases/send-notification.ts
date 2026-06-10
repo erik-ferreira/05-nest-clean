@@ -1,7 +1,8 @@
-import { UniqueEntityID } from "@/core/entities/unique-entity-id"
 import { Either, right } from "@/core/either"
-import { Notification } from "@/domain/forum/enterprise/entities/notification"
-import { NotificationsRepository } from "@/domain/forum/application/repositories/notification-repository"
+import { UniqueEntityID } from "@/core/entities/unique-entity-id"
+
+import { Notification } from "@/domain/notification/enterprise/entities/notification"
+import { NotificationsRepository } from "@/domain/notification/application/repositories/notification-repository"
 
 export interface SendNotificationUseCaseRequest {
   recipientId: string

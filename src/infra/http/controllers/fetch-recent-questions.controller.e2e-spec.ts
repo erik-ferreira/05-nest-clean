@@ -45,10 +45,6 @@ describe.skip("Fetch recent questions (E2E)", () => {
       }),
       questionFactory.makePrismaQuestion({
         authorId: user.id,
-        title: "Question 01",
-      }),
-      questionFactory.makePrismaQuestion({
-        authorId: user.id,
         title: "Question 02",
       }),
     ])

@@ -36,7 +36,7 @@ describe.skip("Delete question comment (E2E)", () => {
     await app.init()
   })
 
-  test("[DELETE] /answers/:id", async () => {
+  test("[DELETE] /questions/comments/:id", async () => {
     const user = await studentFactory.makePrismaStudent()
 
     const accessToken = jwt.sign({ sub: user.id.toString() })
@@ -48,6 +48,7 @@ describe.skip("Delete question comment (E2E)", () => {
     const questionComment =
       await questionCommentFactory.makePrismaQuestionComment({
         authorId: user.id,
+        questionId: question.id,
       })
 
     const questionCommentId = questionComment.id.toString()

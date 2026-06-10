@@ -1,9 +1,9 @@
-import { UniqueEntityID } from "@/core/entities/unique-entity-id"
 import { Either, left, right } from "@/core/either"
-import { Notification } from "@/domain/forum/enterprise/entities/notification"
-import { NotificationsRepository } from "@/domain/forum/application/repositories/notification-repository"
-import { ResourceNotFoundError } from "@/core/errors/resource-not-found-error"
 import { NotAllowedError } from "@/core/errors/not-allowed-error"
+import { ResourceNotFoundError } from "@/core/errors/resource-not-found-error"
+
+import { Notification } from "@/domain/notification/enterprise/entities/notification"
+import { NotificationsRepository } from "@/domain/notification/application/repositories/notification-repository"
 
 interface ReadNotificationUseCaseRequest {
   recipientId: string
