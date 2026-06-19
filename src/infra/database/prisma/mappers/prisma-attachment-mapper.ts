@@ -1,7 +1,7 @@
 import { Prisma } from "@/generated/prisma/client"
 import { Attachment } from "@/domain/forum/enterprise/entities/attachment"
 
-export class PrismaAttachmentMapperMapper {
+export class PrismaAttachmentMapper {
   static toPrisma(
     attachment: Attachment,
   ): Prisma.AttachmentUncheckedCreateInput {
