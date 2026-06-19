@@ -11,7 +11,7 @@ import { DatabaseModule } from "@/infra/database/database.module"
 import { StudentFactory } from "@/test/factories/make-student"
 import { AttachmentFactory } from "@/test/factories/make-attachment"
 
-describe.skip("Create Question (E2E)", () => {
+describe("Create Question (E2E)", () => {
   let app: INestApplication
   let prisma: PrismaService
   let jwt: JwtService
@@ -47,7 +47,7 @@ describe.skip("Create Question (E2E)", () => {
       .send({
         title: "New Question",
         content: "Question content",
-        attachments: [attachment1, attachment2],
+        attachments: [attachment1.id.toString(), attachment2.id.toString()],
       })
 
     expect(response.statusCode).toBe(201)
