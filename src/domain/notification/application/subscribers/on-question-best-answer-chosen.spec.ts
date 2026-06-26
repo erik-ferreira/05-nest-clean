@@ -1,12 +1,17 @@
 import { OnQuestionBestAnswerChosen } from "@/domain/notification/application/subscribers/on-question-best-answer-chosen"
-import { InMemoryAnswerAttachmentRepository } from "@/test/repositories/in-memory-answer-attachments-repository"
-import { InMemoryAnswersRepository } from "@/test/repositories/in-memory-answers-repository"
-import { InMemoryNotificationRepository } from "@/test/repositories/in-memory-notification-repository"
-import { InMemoryQuestionAttachmentRepository } from "@/test/repositories/in-memory-question-attachments-repository"
-import { InMemoryQuestionsRepository } from "@/test/repositories/in-memory-question-repository"
-import { SendNotificationUseCase } from "../use-cases/send-notification"
-import { makeQuestion } from "@/test/factories/make-question"
+import { SendNotificationUseCase } from "@/domain/notification/application/use-cases/send-notification"
+
 import { makeAnswer } from "@/test/factories/make-answer"
+import { makeQuestion } from "@/test/factories/make-question"
+
+import { InMemoryAnswersRepository } from "@/test/repositories/in-memory-answers-repository"
+import { InMemoryStudentsRepository } from "@/test/repositories/in-memory-students-repository"
+import { InMemoryQuestionsRepository } from "@/test/repositories/in-memory-question-repository"
+import { InMemoryAttachmentsRepository } from "@/test/repositories/in-memory-attachments-repository"
+import { InMemoryNotificationRepository } from "@/test/repositories/in-memory-notification-repository"
+import { InMemoryAnswerAttachmentRepository } from "@/test/repositories/in-memory-answer-attachments-repository"
+import { InMemoryQuestionAttachmentRepository } from "@/test/repositories/in-memory-question-attachments-repository"
+
 import { waitFor } from "@/test/utils/wait-for"
 
 let inMemoryQuestionAttachmentsRepository: InMemoryQuestionAttachmentRepository
@@ -15,15 +20,21 @@ let inMemoryAnswerAttachmentsRepository: InMemoryAnswerAttachmentRepository
 let inMemoryAnswersRepository: InMemoryAnswersRepository
 let inMemoryNotificationsRepository: InMemoryNotificationRepository
 let sendNotificationUseCase: SendNotificationUseCase
+let inMemoryAttachmentsRepository: InMemoryAttachmentsRepository
+let inMemoryStudentsRepository: InMemoryStudentsRepository
 
 let sendNotificationExecuteSpy: any
 
 describe("On Question Best Answer Chosen", () => {
   beforeEach(() => {
+    inMemoryAttachmentsRepository = new InMemoryAttachmentsRepository()
+    inMemoryStudentsRepository = new InMemoryStudentsRepository()
     inMemoryQuestionAttachmentsRepository =
       new InMemoryQuestionAttachmentRepository()
     inMemoryQuestionsRepository = new InMemoryQuestionsRepository(
       inMemoryQuestionAttachmentsRepository,
+      inMemoryAttachmentsRepository,
+      inMemoryStudentsRepository,
     )
     inMemoryAnswerAttachmentsRepository =
       new InMemoryAnswerAttachmentRepository()

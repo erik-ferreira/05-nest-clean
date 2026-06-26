@@ -1,13 +1,19 @@
-import { makeAnswer } from "@/test/factories/make-answer"
-import { InMemoryAnswerAttachmentRepository } from "@/test/repositories/in-memory-answer-attachments-repository"
-import { InMemoryAnswersRepository } from "@/test/repositories/in-memory-answers-repository"
-import { OnAnswerCreated } from "./on-answer-created"
-import { InMemoryQuestionAttachmentRepository } from "@/test/repositories/in-memory-question-attachments-repository"
-import { InMemoryQuestionsRepository } from "@/test/repositories/in-memory-question-repository"
-import { InMemoryNotificationRepository } from "@/test/repositories/in-memory-notification-repository"
-import { SendNotificationUseCase } from "../use-cases/send-notification"
 import { vi } from "vitest"
+
+import { OnAnswerCreated } from "@/domain/notification/application/subscribers/on-answer-created"
+import { SendNotificationUseCase } from "@/domain/notification/application/use-cases/send-notification"
+
+import { makeAnswer } from "@/test/factories/make-answer"
 import { makeQuestion } from "@/test/factories/make-question"
+
+import { InMemoryAnswersRepository } from "@/test/repositories/in-memory-answers-repository"
+import { InMemoryStudentsRepository } from "@/test/repositories/in-memory-students-repository"
+import { InMemoryQuestionsRepository } from "@/test/repositories/in-memory-question-repository"
+import { InMemoryAttachmentsRepository } from "@/test/repositories/in-memory-attachments-repository"
+import { InMemoryNotificationRepository } from "@/test/repositories/in-memory-notification-repository"
+import { InMemoryAnswerAttachmentRepository } from "@/test/repositories/in-memory-answer-attachments-repository"
+import { InMemoryQuestionAttachmentRepository } from "@/test/repositories/in-memory-question-attachments-repository"
+
 import { waitFor } from "@/test/utils/wait-for"
 
 let inMemoryQuestionAttachmentRepository: InMemoryQuestionAttachmentRepository
@@ -16,15 +22,21 @@ let inMemoryAnswerAttachmentRepository: InMemoryAnswerAttachmentRepository
 let inMemoryAnswerRepository: InMemoryAnswersRepository
 let inMemoryNotificationRepository: InMemoryNotificationRepository
 let sendNotificationUseCase: SendNotificationUseCase
+let inMemoryAttachmentsRepository: InMemoryAttachmentsRepository
+let inMemoryStudentsRepository: InMemoryStudentsRepository
 
 let sendNotificationExecuteSpy: any
 
 describe("On Answer Created", () => {
   beforeEach(() => {
+    inMemoryAttachmentsRepository = new InMemoryAttachmentsRepository()
+    inMemoryStudentsRepository = new InMemoryStudentsRepository()
     inMemoryQuestionAttachmentRepository =
       new InMemoryQuestionAttachmentRepository()
     inMemoryQuestionRepository = new InMemoryQuestionsRepository(
       inMemoryQuestionAttachmentRepository,
+      inMemoryAttachmentsRepository,
+      inMemoryStudentsRepository,
     )
     inMemoryAnswerAttachmentRepository =
       new InMemoryAnswerAttachmentRepository()
