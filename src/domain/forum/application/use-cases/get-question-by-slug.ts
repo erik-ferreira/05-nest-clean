@@ -1,6 +1,5 @@
 import { Injectable } from "@nestjs/common"
 
-import { Question } from "@/domain/forum/enterprise/entities/question"
 import { QuestionsRepository } from "@/domain/forum/application/repositories/questions-repository"
 
 import { Either, left, right } from "@/core/either"

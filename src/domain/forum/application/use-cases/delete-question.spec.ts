@@ -1,22 +1,32 @@
-import { DeleteQuestionUseCase } from "./delete-question"
 import { UniqueEntityID } from "@/core/entities/unique-entity-id"
+import { NotAllowedError } from "@/core/errors/not-allowed-error"
+
+import { DeleteQuestionUseCase } from "@/domain/forum/application/use-cases/delete-question"
 
 import { makeQuestion } from "@/test/factories/make-question"
-import { InMemoryQuestionsRepository } from "@/test/repositories/in-memory-question-repository"
-import { NotAllowedError } from "@/core/errors/not-allowed-error"
-import { InMemoryQuestionAttachmentRepository } from "@/test/repositories/in-memory-question-attachments-repository"
 import { makeQuestionAttachment } from "@/test/factories/make-question-attachment"
 
+import { InMemoryQuestionsRepository } from "@/test/repositories/in-memory-question-repository"
+import { InMemoryStudentsRepository } from "@/test/repositories/in-memory-students-repository"
+import { InMemoryAttachmentsRepository } from "@/test/repositories/in-memory-attachments-repository"
+import { InMemoryQuestionAttachmentRepository } from "@/test/repositories/in-memory-question-attachments-repository"
+
+let inMemoryStudentsRepository: InMemoryStudentsRepository
 let inMemoryQuestionsRepository: InMemoryQuestionsRepository
+let inMemoryAttachmentsRepository: InMemoryAttachmentsRepository
 let inMemoryQuestionAttachmentRepository: InMemoryQuestionAttachmentRepository
 let sut: DeleteQuestionUseCase
 
 describe("Delete Question", () => {
   beforeEach(() => {
+    inMemoryStudentsRepository = new InMemoryStudentsRepository()
+    inMemoryAttachmentsRepository = new InMemoryAttachmentsRepository()
     inMemoryQuestionAttachmentRepository =
       new InMemoryQuestionAttachmentRepository()
     inMemoryQuestionsRepository = new InMemoryQuestionsRepository(
       inMemoryQuestionAttachmentRepository,
+      inMemoryAttachmentsRepository,
+      inMemoryStudentsRepository,
     )
     sut = new DeleteQuestionUseCase(inMemoryQuestionsRepository)
   })

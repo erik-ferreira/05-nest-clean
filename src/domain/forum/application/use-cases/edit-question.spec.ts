@@ -1,22 +1,32 @@
-import { EditQuestionUseCase } from "./edit-question"
+import { NotAllowedError } from "@/core/errors/not-allowed-error"
 import { UniqueEntityID } from "@/core/entities/unique-entity-id"
 
+import { EditQuestionUseCase } from "@/domain/forum/application/use-cases/edit-question"
+
 import { makeQuestion } from "@/test/factories/make-question"
-import { InMemoryQuestionsRepository } from "@/test/repositories/in-memory-question-repository"
-import { NotAllowedError } from "@/core/errors/not-allowed-error"
-import { InMemoryQuestionAttachmentRepository } from "@/test/repositories/in-memory-question-attachments-repository"
 import { makeQuestionAttachment } from "@/test/factories/make-question-attachment"
 
+import { InMemoryStudentsRepository } from "@/test/repositories/in-memory-students-repository"
+import { InMemoryQuestionsRepository } from "@/test/repositories/in-memory-question-repository"
+import { InMemoryAttachmentsRepository } from "@/test/repositories/in-memory-attachments-repository"
+import { InMemoryQuestionAttachmentRepository } from "@/test/repositories/in-memory-question-attachments-repository"
+
+let inMemoryStudentsRepository: InMemoryStudentsRepository
 let inMemoryQuestionsRepository: InMemoryQuestionsRepository
+let inMemoryAttachmentsRepository: InMemoryAttachmentsRepository
 let inMemoryQuestionAttachmentRepository: InMemoryQuestionAttachmentRepository
 let sut: EditQuestionUseCase
 
 describe("Edit Question", () => {
   beforeEach(() => {
+    inMemoryStudentsRepository = new InMemoryStudentsRepository()
+    inMemoryAttachmentsRepository = new InMemoryAttachmentsRepository()
     inMemoryQuestionAttachmentRepository =
       new InMemoryQuestionAttachmentRepository()
     inMemoryQuestionsRepository = new InMemoryQuestionsRepository(
       inMemoryQuestionAttachmentRepository,
+      inMemoryAttachmentsRepository,
+      inMemoryStudentsRepository,
     )
     sut = new EditQuestionUseCase(
       inMemoryQuestionsRepository,

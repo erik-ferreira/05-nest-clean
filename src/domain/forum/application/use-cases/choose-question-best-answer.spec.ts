@@ -1,16 +1,23 @@
-import { ChooseQuestionBestAnswerUseCase } from "./choose-question-best-answer"
 import { UniqueEntityID } from "@/core/entities/unique-entity-id"
-
-import { makeQuestion } from "@/test/factories/make-question"
-import { InMemoryQuestionsRepository } from "@/test/repositories/in-memory-question-repository"
-import { InMemoryAnswersRepository } from "@/test/repositories/in-memory-answers-repository"
-import { makeAnswer } from "@/test/factories/make-answer"
 import { NotAllowedError } from "@/core/errors/not-allowed-error"
+
+import { ChooseQuestionBestAnswerUseCase } from "@/domain/forum/application/use-cases/choose-question-best-answer"
+
+import { makeAnswer } from "@/test/factories/make-answer"
+import { makeQuestion } from "@/test/factories/make-question"
+
+import { InMemoryAnswersRepository } from "@/test/repositories/in-memory-answers-repository"
+import { InMemoryStudentsRepository } from "@/test/repositories/in-memory-students-repository"
+import { InMemoryQuestionsRepository } from "@/test/repositories/in-memory-question-repository"
+import { InMemoryAttachmentsRepository } from "@/test/repositories/in-memory-attachments-repository"
 import { InMemoryAnswerAttachmentRepository } from "@/test/repositories/in-memory-answer-attachments-repository"
 import { InMemoryQuestionAttachmentRepository } from "@/test/repositories/in-memory-question-attachments-repository"
 
 let inMemoryAnswerAttachmentsRepository: InMemoryAnswerAttachmentRepository
 let inMemoryAnswersRepository: InMemoryAnswersRepository
+
+let inMemoryStudentsRepository: InMemoryStudentsRepository
+let inMemoryAttachmentsRepository: InMemoryAttachmentsRepository
 
 let inMemoryQuestionAttachmentsRepository: InMemoryQuestionAttachmentRepository
 let inMemoryQuestionsRepository: InMemoryQuestionsRepository
@@ -25,10 +32,15 @@ describe("Choose Question Best Answer", () => {
       inMemoryAnswerAttachmentsRepository,
     )
 
+    inMemoryStudentsRepository = new InMemoryStudentsRepository()
+    inMemoryAttachmentsRepository = new InMemoryAttachmentsRepository()
+
     inMemoryQuestionAttachmentsRepository =
       new InMemoryQuestionAttachmentRepository()
     inMemoryQuestionsRepository = new InMemoryQuestionsRepository(
       inMemoryQuestionAttachmentsRepository,
+      inMemoryAttachmentsRepository,
+      inMemoryStudentsRepository,
     )
 
     sut = new ChooseQuestionBestAnswerUseCase(
