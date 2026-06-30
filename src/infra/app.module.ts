@@ -6,6 +6,7 @@ import { envSchema } from "@/infra/env/env"
 import { EnvModule } from "@/infra/env/env.module"
 import { AuthModule } from "@/infra/auth/auth.module"
 import { HttpModule } from "@/infra/http/http.module"
+import { EventsModule } from "@/infra/events/events.module"
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { HttpModule } from "@/infra/http/http.module"
     AuthModule,
     HttpModule,
     EnvModule,
+    EventsModule,
   ],
 })
 export class AppModule {}
