@@ -6,6 +6,8 @@ import { PrismaPg } from "@prisma/adapter-pg"
 
 import { PrismaClient } from "@/generated/prisma/client"
 
+import { DomainEvents } from "@/core/events/domain-events"
+
 config({ path: ".env", override: true })
 config({ path: ".env.test", override: true })
 
@@ -31,6 +33,8 @@ beforeAll(async () => {
   const databaseURL = generateUniqueDatabaseURL(randomSchemaId)
 
   process.env.DATABASE_URL = databaseURL
+
+  DomainEvents.shouldRun = false
 
   execSync("npx prisma migrate deploy")
 }, 20000)
